@@ -4,11 +4,13 @@
 
 
 
+[TOC]
+
 ## Advantages
 
 Beeline allows you to create dynamic ANSI compiliant SQL queries in the semantics of PHP's data structures
 
-#### Malleable 
+### Malleable 
 
 This allows you to leverage your programming language to manipulate queries instead of relying on the API of your builder 
 
@@ -44,7 +46,7 @@ Recursively remove a column from a query and it's sub queries:
 
 Traditional query builders will let you down once you leave their implemented manipulation methods
 
-#### Reusable
+### Reusable
 
 When dealing with complex queries that can permutate in specific but hard to predict ways it's often useful to re-use parts of the query, many query builders often encourage you to put your business logic in hidden state objects:
 
@@ -91,19 +93,20 @@ Beeline handles many cases that other query builders do not:
 
 ### Debuggable
 
+
+
 ## Getting started
 
-###### Output
+### Hello world
 
 ```php
+// output
 ['SELECT ?', 1]
-```
-
-###### Input
-
-```php
+// input
 [':select' => [1]]
 ```
+
+###### 
 
 
 
