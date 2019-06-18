@@ -80,7 +80,7 @@ function one_equal_one() : array
 
 Use it in a select query or an update query or manipulate it at run time then apply it, it's up to you!
 
-### Powerful
+### Powerful
 
 Beeline handles many cases that other query builders do not:
 
