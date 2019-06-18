@@ -1,0 +1,12 @@
+{
+    "name": "slifin/beeline-php",
+    "description": "Data orientated query builder",
+    "require": {
+        "php": "^7.0",
+    },
+    "autoload": {
+        "files": [
+            "index.php"
+        ]
+    }
+}
