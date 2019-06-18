@@ -42,7 +42,7 @@ Recursively remove a column from a query and it's sub queries:
 // You get the point, you can use PHP to manipulate the data
 ```
 
-Traditional query builders will let you down if you try to do many of the arbitary operations above
+Traditional query builders will let you down once you leave their implemented manipulation methods
 
 #### Reusable
 
@@ -80,21 +80,29 @@ function one_equal_one() : array
 
 Use it in a select query or an update query or manipulate it at run time then apply it, it's up to you!
 
+### Powerful
 
+Beeline handles many cases that other query builders do not:
+
+- Zend DB: Parameterised expressions
+
+- Doctrine: Unions, sub queries
+
+  
 
 ## Getting started
 
-```mysql
-SELECT 1;
+###### Output
+
+```php
+['SELECT ?', 1]
 ```
+
+###### Input
 
 ```php
 [':select' => [1]]
 ```
-
-
-
-
 
 
 
