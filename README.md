@@ -85,10 +85,7 @@ Use it in a select query or an update query or manipulate it at run time then ap
 Beeline handles many cases that other query builders do not:
 
 - Zend DB: Parameterised expressions
-
 - Doctrine: Unions, sub queries
-
-  
 
 ## Getting started
 
