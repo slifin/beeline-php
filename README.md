@@ -87,6 +87,10 @@ Beeline handles many cases that other query builders do not:
 - Zend DB: Parameterised expressions
 - Doctrine: Unions, sub queries
 
+### Testable
+
+### Debuggable
+
 ## Getting started
 
 ###### Output
