@@ -90,5 +90,8 @@ Beeline handles many cases that other query builders do not:
 - Doctrine: Unions, sub queries
 
 ### Testable
+Assert against the shape of a query instead of strings, for example you can assert that a query has a particular condition by checking that the relevant data structure exists
 
 ### Debuggable
+
+Has your query gone wrong? Have a look through the query's structure with xdebug, or print smaller parts of the query by passing it to beeline's function
