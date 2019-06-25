@@ -2,9 +2,9 @@
 
 *Data orientated query builder*
 
+## Documentation
 
-
-[TOC]
+For now I suggest reading this: https://github.com/jkk/honeysql
 
 ## Advantages
 
@@ -92,21 +92,3 @@ Beeline handles many cases that other query builders do not:
 ### Testable
 
 ### Debuggable
-
-
-
-## Getting started
-
-### Hello world
-
-```php
-// output
-['SELECT ?', 1]
-// input
-[':select' => [1]]
-```
-
-###### 
-
-
-
