@@ -82,12 +82,12 @@ function one_equal_one() : array
 
 Use it in a select query or an update query or manipulate it at run time then apply it, it's up to you!
 
-### Powerful
+### Full featured
 
 Beeline handles many cases that other query builders do not:
 
-- Zend DB: Parameterised expressions
-- Doctrine: Unions, sub queries
+- Zend DB: Parameterised expressions in columns
+- Doctrine DQL: Unions, sub queries
 
 ### Testable
 Assert against the shape of a query instead of strings, for example you can assert that a query has a particular condition by checking that the relevant data structure exists
