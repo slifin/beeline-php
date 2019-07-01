@@ -84,10 +84,13 @@ Use it in a select query or an update query or manipulate it at run time then ap
 
 ### Full featured
 
-Beeline handles many cases that other query builders do not:
+Supports:
+  - Sub queries
+  - Unions
+  - Common table expressions
+  - Expressions
 
-- Zend DB: Parameterised expressions in columns
-- Doctrine DQL: Unions, sub queries
+See https://github.com/jkk/honeysql for more examples
 
 ### Testable
 Assert against the shape of a query instead of strings, for example you can assert that a query has a particular condition by checking that the relevant data structure exists
