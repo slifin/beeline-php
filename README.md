@@ -21,7 +21,7 @@ Create your first query:
 require_once __DIR__ . '/vendor/autoload.php';
 
 \slifin\beeline\format([
-	':select' => [1]
+    ':select' => [1]
 ]); // ['SELECT ?', 1];
 ```
 
