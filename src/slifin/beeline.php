@@ -14,7 +14,7 @@ function bridge(...$arguments)
 
     $descriptor = [
        0 => ['pipe', 'r'],
-       1 => ["pipe", "w"],
+       1 => ['pipe', 'w'],
     ];
 
     $process = proc_open($command, $descriptor, $pipes);
