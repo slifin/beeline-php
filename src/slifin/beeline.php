@@ -7,7 +7,7 @@
 
 namespace slifin\beeline;
 
-function bridge(...$arguments)
+function bridge($input)
 {
     $jar = sprintf('%s/jars/honeysql-1.0.444.jar', __DIR__);
     $command = sprintf('bb -f beeline.clj -cp %s', $jar);
@@ -24,12 +24,14 @@ function bridge(...$arguments)
     }
 
     [$stdin, $stdout] = $pipes;
-    fwrite($stdin, $arguments);
+    fwrite($stdin, $input);
     fclose($stdin);
 
     $query = stream_get_contents($stdout);
     fclose($stdout);
     $return_value = proc_close($process);
 
-    return $query;
+    return [$query, $return_value];
 }
+$transit = '[["^ ","~:select",["~:a","~:b"]]]';
+var_dump(bridge($transit));
