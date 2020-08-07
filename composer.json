@@ -2,17 +2,13 @@
     "name": "slifin/beeline-php",
     "description": "Data orientated query builder",
     "require": {
-        "php": "^7.4"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install -o install-babashka",
-            "chmod +x install-babashka && sudo ./install-babashka"
-        ],
+        "php": "^7.4",
+        "honzabrecka/transit-php": "^0.8.4"
     },
     "autoload": {
-        "files": [
-            "index.php"
-        ]
-    }
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "scripts": {}
 }

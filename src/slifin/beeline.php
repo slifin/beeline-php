@@ -5,33 +5,34 @@
  * Beeline interface for PHP.
  */
 
-namespace slifin\beeline;
+namespace slifin;
 
-function bridge($input)
+class Beeline
 {
-    $jar = sprintf('%s/jars/honeysql-1.0.444.jar', __DIR__);
-    $command = sprintf('bb -f beeline.clj -cp %s', $jar);
+    public static function bridge(string $transit)
+    {
+        $jar = sprintf('%s/jars/honeysql-1.0.444.jar', __DIR__);
+        $command = sprintf('bb -f %s/beeline.clj -cp %s', __DIR__, $jar);
 
-    $descriptor = [
-       0 => ['pipe', 'r'],
-       1 => ['pipe', 'w'],
-    ];
+        $descriptor = [
+           0 => ['pipe', 'r'],
+           1 => ['pipe', 'w'],
+        ];
 
-    $process = proc_open($command, $descriptor, $pipes);
+        $process = proc_open($command, $descriptor, $pipes);
 
-    if (!is_resource($process)) {
-        throw new Exception('Failed to open process');
+        if (!is_resource($process)) {
+            throw new Exception('Failed to open process');
+        }
+
+        [$stdin, $stdout] = $pipes;
+        fwrite($stdin, $transit);
+        fclose($stdin);
+
+        $query = stream_get_contents($stdout);
+        fclose($stdout);
+        $return_value = proc_close($process);
+
+        return [trim($query), $return_value];
     }
-
-    [$stdin, $stdout] = $pipes;
-    fwrite($stdin, $input);
-    fclose($stdin);
-
-    $query = stream_get_contents($stdout);
-    fclose($stdout);
-    $return_value = proc_close($process);
-
-    return [$query, $return_value];
 }
-$transit = '[["^ ","~:select",["~:a","~:b"]]]';
-var_dump(bridge($transit));
