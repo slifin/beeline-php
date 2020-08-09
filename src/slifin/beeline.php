@@ -7,6 +7,12 @@
 
 namespace slifin;
 
+use transit\Map;
+use transit\Keyword;
+use transit\JSONReader;
+use transit\JSONWriter;
+use transit\Transit;
+
 class Beeline
 {
     public static function bridge(string $transit)
@@ -34,5 +40,53 @@ class Beeline
         $return_value = proc_close($process);
 
         return [trim($query), $return_value];
+    }
+
+    public static function format($query)
+    {
+        self::walk($query);
+        $transit = new Transit(new JSONReader(), new JSONWriter());
+        $msg = $transit->write($query);
+        $response = self::bridge($msg)[0];
+        return $transit->read($response);
+    }
+
+    public static function walk(&$query)
+    {
+        if (!is_array($query)) {
+            return;
+        }
+
+        $is_map = is_string(array_key_first($query));
+
+        $new = [];
+
+        foreach ($query as $k => $v) {
+            self::walk($v);
+            $new[$k] = $v;
+        }
+
+        if ($is_map) {
+            $map = new Map([]);
+            foreach ($new as $k => $v) {
+                $map->offsetSet(
+                    self::parse($k),
+                    self::parse($v)
+                );
+            }
+            $query = $map;
+        } else {
+            $query = array_map([self::class, 'parse'], $new);
+        }
+    }
+
+    public static function parse($input)
+    {
+        switch (true) {
+            case is_string($input):
+                return new Keyword($input);
+        }
+
+        return $input;
     }
 }

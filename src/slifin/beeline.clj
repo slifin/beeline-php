@@ -7,4 +7,8 @@
                (transit/reader :json)
                transit/read))
 
-(->> input (apply sql/format) prn)
+(def result (->> input (apply sql/format)))
+
+(def writer (transit/writer System/out :json))
+
+(transit/write writer result)
