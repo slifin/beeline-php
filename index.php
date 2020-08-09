@@ -6,7 +6,7 @@ require __DIR__ . '/vendor/autoload.php';
 // var_dump(\slifin\Beeline::bridge($transit));
 $a =
         [
-            'SELECT' => ['a', 'c'],
+            'select' => ['a', 'b', 'c'],
             // 'from' => [['test'], "test2"],
             // 'where' => ['=', 'hey', 'yo'],
         ]

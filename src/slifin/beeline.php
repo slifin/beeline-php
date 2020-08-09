@@ -42,11 +42,11 @@ class Beeline
         return [trim($query), $return_value];
     }
 
-    public static function format($query)
+    public static function format($query, ...$args)
     {
         self::walk($query);
         $transit = new Transit(new JSONReader(), new JSONWriter());
-        $msg = $transit->write($query);
+        $msg = $transit->write([$query, ...$args]);
         $response = self::bridge($msg)[0];
         return $transit->read($response);
     }
